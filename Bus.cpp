@@ -22,7 +22,7 @@ void Bus::write(uint16_t addrLocation, uint8_t data)
 		ram[addrLocation] = data;
 }
 
-uint8_t Bus::read(uint16_t addrLocation, bool readOnly = false)
+uint8_t Bus::read(uint16_t addrLocation, bool readOnly)
 {
 	// Write at specified RAM location with data (0 to 65535)
 	if (addrLocation >= 0x0000 && addrLocation <= 0xFFFF)
