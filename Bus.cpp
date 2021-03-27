@@ -6,8 +6,11 @@
 
 Bus::Bus()
 {
+	cpu.ConnectBus(this);
+
 	// Clear RAM
-	for (auto& i : ram) i = 0x00;
+	for (auto &i : ram) 
+		i = 0x00;
 }
 
 Bus::~Bus() 
@@ -15,16 +18,16 @@ Bus::~Bus()
 
 }
 
-void Bus::write(uint16_t addrLocation, uint8_t data)
+void Bus::Write(uint16_t addrLocation, uint8_t data)
 {
 	// Write at specified RAM location with data (0 to 65535)
 	if (addrLocation >= 0x0000 && addrLocation <= 0xFFFF) 
 		ram[addrLocation] = data;
 }
 
-uint8_t Bus::read(uint16_t addrLocation, bool readOnly)
+uint8_t Bus::Read(uint16_t addrLocation, bool readOnly)
 {
-	// Write at specified RAM location with data (0 to 65535)
+	// Read at specified RAM location with data (0 to 65535)
 	if (addrLocation >= 0x0000 && addrLocation <= 0xFFFF)
 		return ram[addrLocation];
 
